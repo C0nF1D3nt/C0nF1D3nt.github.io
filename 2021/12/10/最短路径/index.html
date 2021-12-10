@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="LeetCode 894. All Possible Full Binary Trees题目描述Given an integer n, return a list of all possible full binary trees with n nodes. Each node of each tree in the answer must have Node.val &#x3D;&#x3D; 0.       Ea">
+  <meta name="description" content="最短路径最短路径是对一个无负权边的有权图而言的。求最短路径指求一个结点到另一个结点经过的边上的权值之和的最小的路径。 Dijkstra算法Dijkstra算法也是一个非常典型的贪心算法。Dijkstra算法和求最小生成树中的Prim算法非常相似，Dijkstra算法也是从某一个结点出发，每次寻找距离起点最小距离的结点，访问这个结点的同时更新这个结点所有邻接点到起点的距离，直到所有结点都已被访问。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 894. All Possible Full Binary Trees">
-<meta property="og:url" content="http://example.com/2021/11/15/All-possible-tree/index.html">
+<meta property="og:title" content="最短路径算法">
+<meta property="og:url" content="http://example.com/2021/12/10/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/index.html">
 <meta property="og:site_name" content="Code King&#39;s Blog">
-<meta property="og:description" content="LeetCode 894. All Possible Full Binary Trees题目描述Given an integer n, return a list of all possible full binary trees with n nodes. Each node of each tree in the answer must have Node.val &#x3D;&#x3D; 0.       Ea">
+<meta property="og:description" content="最短路径最短路径是对一个无负权边的有权图而言的。求最短路径指求一个结点到另一个结点经过的边上的权值之和的最小的路径。 Dijkstra算法Dijkstra算法也是一个非常典型的贪心算法。Dijkstra算法和求最小生成树中的Prim算法非常相似，Dijkstra算法也是从某一个结点出发，每次寻找距离起点最小距离的结点，访问这个结点的同时更新这个结点所有邻接点到起点的距离，直到所有结点都已被访问。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-15T07:57:00.000Z">
-<meta property="article:modified_time" content="2021-11-15T07:56:12.799Z">
+<meta property="article:published_time" content="2021-12-10T08:28:00.000Z">
+<meta property="article:modified_time" content="2021-12-10T08:52:36.638Z">
 <meta property="article:author" content="bjy">
-<meta property="article:tag" content="树">
+<meta property="article:tag" content="图">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/11/15/All-possible-tree/">
+<link rel="canonical" href="http://example.com/2021/12/10/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>LeetCode 894. All Possible Full Binary Trees | Code King's Blog</title>
+  <title>最短路径算法 | Code King's Blog</title>
   
 
 
@@ -201,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/15/All-possible-tree/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/10/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -214,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode 894. All Possible Full Binary Trees
+          最短路径算法
         </h1>
 
         <div class="post-meta">
@@ -226,7 +226,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-15 15:57:00 / 修改时间：15:56:12" itemprop="dateCreated datePublished" datetime="2021-11-15T15:57:00+08:00">2021-11-15</time>
+              <time title="创建时间：2021-12-10 16:28:00 / 修改时间：16:52:36" itemprop="dateCreated datePublished" datetime="2021-12-10T16:28:00+08:00">2021-12-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,7 +234,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E6%A0%91/" itemprop="url" rel="index"><span itemprop="name">数据结构——树</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">数据结构——图</span></a>
                 </span>
             </span>
 
@@ -251,7 +251,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -270,20 +270,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="LeetCode-894-All-Possible-Full-Binary-Trees"><a href="#LeetCode-894-All-Possible-Full-Binary-Trees" class="headerlink" title="LeetCode 894. All Possible Full Binary Trees"></a>LeetCode 894. All Possible Full Binary Trees</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given an integer n, return a list of all possible full binary trees with n nodes. Each node of each tree in the answer must have Node.val == 0.      </p>
-<p>Each element of the answer is the root node of one possible tree. You may return the final list of trees in any order.      </p>
-<p>A full binary tree is a binary tree where each node has exactly 0 or 2 children.</p>
-<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>n = 7</p>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]</p>
-<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h2><h3 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h3><p>n = 3</p>
-<h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><p>[[0,0,0]]
- </p>
-<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h2><p>1 &lt;= n &lt;= 20</p>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>输入一个整数n，输出由n个结点组成的所有可能的二叉树，这个二叉树必须满足每个结点都有0个或者2个子结点，每个结点的值都为0。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>由于每个结点都有0个或者2个子结点，故n一定为奇数，所以按照从小到大的顺序进行遍历，设左侧结点数为i，递归调用函数建立子树，右侧同理，然后接到当前的根结点上即可建立一棵符合条件的二叉树。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;TreeNode*&gt; <span class="title">allPossibleFBT</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        vector&lt;TreeNode*&gt; v;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;  <span class="comment">//边界条件，如果只有一个结点，就创建然后返回</span></span><br><span class="line">            TreeNode* node = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(<span class="number">0</span>);</span><br><span class="line">            v.<span class="built_in">push_back</span>(node);</span><br><span class="line">            <span class="keyword">return</span> v;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; n;i += <span class="number">2</span>)&#123;  <span class="comment">//遍历所有可能情况，左侧结点为i个，右侧结点为n-i-1个</span></span><br><span class="line">            vector&lt;TreeNode*&gt; left = <span class="built_in">allPossibleFBT</span>(i);  <span class="comment">//递归建立左子树</span></span><br><span class="line">            vector&lt;TreeNode*&gt; right = <span class="built_in">allPossibleFBT</span>(n-i<span class="number">-1</span>);  <span class="comment">//递归建立右子树</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; left.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k &lt; right.<span class="built_in">size</span>();k++)&#123;</span><br><span class="line">                    <span class="comment">//从左右子树取出任意一个作为根结点，然后接在当前这个根结点上</span></span><br><span class="line">                    TreeNode* node = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(<span class="number">0</span>);</span><br><span class="line">                    node-&gt;left = left[j];</span><br><span class="line">                    node-&gt;right = right[k];</span><br><span class="line">                    v.<span class="built_in">push_back</span>(node);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h1 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h1><p>最短路径是对一个无负权边的有权图而言的。求最短路径指求一个结点到另一个结点经过的边上的权值之和的最小的路径。</p>
+<h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><p>Dijkstra算法也是一个非常典型的贪心算法。Dijkstra算法和求最小生成树中的Prim算法非常相似，Dijkstra算法也是从某一个结点出发，每次寻找距离起点最小距离的结点，访问这个结点的同时更新这个结点所有邻接点到起点的距离，直到所有结点都已被访问。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_Dijkstra</span><span class="params">(Graph g,<span class="keyword">int</span> start,vector&lt;<span class="keyword">int</span>&gt;&amp; minpath,vector&lt;<span class="keyword">int</span>&gt;&amp; pathvex)</span></span>&#123;</span><br><span class="line">    <span class="comment">//g中包括图的顶点数和边数以及一个邻接矩阵，minpath存储起点到各个结点的最短路径的值</span></span><br><span class="line">    <span class="comment">//pathvex存储每个结点的前驱结点，可以通过前驱结点反向推出最短路径</span></span><br><span class="line">    <span class="keyword">int</span> n = g.numvex;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">flag</span><span class="params">(n,<span class="number">0</span>)</span></span>;  <span class="comment">//访问标记</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        minpath[i] = g.adj[start][i];</span><br><span class="line">        minvex[i] = <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    flag[start] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;  <span class="comment">//每次循环收入一个结点</span></span><br><span class="line">        <span class="keyword">int</span> dmin = INF;</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;  <span class="comment">//找到当前距离起点最短的那个结点</span></span><br><span class="line">            <span class="keyword">if</span>(!flag[j] &amp;&amp; minpath[j] &lt; dmin)&#123;</span><br><span class="line">                dmin = minpath[j];</span><br><span class="line">                idx = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        flag[idx] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;  <span class="comment">//更新新收入这个结点的所有未收入邻接点的距离</span></span><br><span class="line">            <span class="keyword">if</span>(!flag[j] &amp;&amp; dmin + g.adj[idx][j] &lt; minpath[j])&#123;</span><br><span class="line">                minpath[j] = dmin + g.adj[idx][j];</span><br><span class="line">                minvex[j] = idx;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+<h2 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h2><p>Floyd算法用来求所有顶点到所有顶点的最短路径，并且在算法实现上非常简洁明了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_Floyd</span><span class="params">(Graph g,vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; minpath,vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; pathvex)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = g.numvex;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">            minpath[i][j] = g.adj[i][j];  <span class="comment">//初始化为邻接矩阵</span></span><br><span class="line">            pathvex[i][j] = j;  <span class="comment">//初始化为列下标</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(minpath[i][k] + minpath[k][j] &lt; minpath[i][j])&#123;</span><br><span class="line">                    <span class="comment">//如果经过k的路径比原来两点之间的路径小</span></span><br><span class="line">                    minpath[i][j] = minpath[i][k] + minpath[k][j]; <span class="comment">//更新最短路径</span></span><br><span class="line">                    pathvex[i][j] = pathvex[i][k];  <span class="comment">//路径设为经过下标k的顶点</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -308,7 +300,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2021/11/15/All-possible-tree/" title="LeetCode 894. All Possible Full Binary Trees">http://example.com/2021/11/15/All-possible-tree/</a>
+    <a href="http://example.com/2021/12/10/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" title="最短路径算法">http://example.com/2021/12/10/最短路径/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -319,7 +311,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%A0%91/" rel="tag"># 树</a>
+              <a href="/tags/%E5%9B%BE/" rel="tag"># 图</a>
           </div>
 
         
@@ -328,13 +320,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/11/15/Unique-BIT-II/" rel="prev" title="LeetCode 95. Unique Binary Search Trees II">
-      <i class="fa fa-chevron-left"></i> LeetCode 95. Unique Binary Search Trees II
+    <a href="/2021/12/10/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="prev" title="最小生成树算法">
+      <i class="fa fa-chevron-left"></i> 最小生成树算法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/12/09/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="next" title="Graph Traversal">
-      Graph Traversal <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -398,7 +387,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode-894-All-Possible-Full-Binary-Trees"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 894. All Possible Full Binary Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-1"><span class="nav-number">1.2.</span> <span class="nav-text">Example 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.2.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.2.2.</span> <span class="nav-text">Output</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-2"><span class="nav-number">1.3.</span> <span class="nav-text">Example 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">Output</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraints"><span class="nav-number">1.4.</span> <span class="nav-text">Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="nav-number">1.5.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.6.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="nav-number">1.</span> <span class="nav-text">最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">Dijkstra算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floyd%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">Floyd算法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
