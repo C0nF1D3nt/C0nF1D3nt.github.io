@@ -197,6 +197,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/22/AVL-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="bjy">
+      <meta itemprop="description" content="书山有路勤为径，学海无涯苦作舟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code King's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/22/AVL-Tree/" class="post-title-link" itemprop="url">平衡二叉树(AVL)</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-22 13:29:00 / 修改时间：13:45:05" itemprop="dateCreated datePublished" datetime="2022-01-22T13:29:00+08:00">2022-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E6%A0%91/" itemprop="url" rel="index"><span itemprop="name">数据结构——树</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="平衡二叉树-AVL"><a href="#平衡二叉树-AVL" class="headerlink" title="平衡二叉树(AVL)"></a>平衡二叉树(AVL)</h1><p>平衡二叉树是一类特殊的二叉搜索树。由于二叉搜索树在极度不平衡时的搜索效率会大大降低。如果是左右斜树，则搜索效率仅为 $O(n)$，因此我们引入平衡二叉树(AVL)，让二叉搜索树变得平衡，这样二叉搜索树的高度就可以降低，从而减少查找时比较的次数，这样就可以大大提高二叉搜索树的效率。我们选择在插入一个新数据时，就对二叉搜索树进行调整。在插入后对整棵树进行平衡性的检验，如果不平衡，就根据插入的位置进行平衡性调整，使得二叉搜索树重新趋于平衡，这里的平衡指的是树的左右子树的高度不超过一，并且左右子树分别都是平衡二叉树。</p>
+<h1 id="平衡二叉树的调整方式"><a href="#平衡二叉树的调整方式" class="headerlink" title="平衡二叉树的调整方式"></a>平衡二叉树的调整方式</h1><p>不平衡的解决方式分为四种，如果插入位置在不平衡结点左子树的左侧，称为LL旋转；如果插入位置在不平衡结点左子树的右侧，称为LR旋转；如果插入位置在不平衡结点右子树的左侧，称为RL旋转；如果插入位置在不平衡结点右子树的右侧，称为RR旋转。LL旋转和RR旋转是一种比较简单的情况，以LL旋转为例，我们只需要将当前不平衡结点的左子树提上来，作为当前子树的根结点，而当前结点作为左结点的右结点，如果左结点存在右子树怎么办呢？那么就把左结点的右子树插到当前结点的左侧即可。而LR旋转和RR旋转相对比较复杂，LR旋转需要对当前结点的左结点先进行RR旋转，然后对当前结点进行LL旋转；RL旋转则是对当前结点的右结点先进行LL旋转，然后对当前结点进行RR旋转。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AVLTree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    AVLTree* left;</span><br><span class="line">    AVLTree* right;</span><br><span class="line">    <span class="keyword">int</span> height;</span><br><span class="line">    <span class="built_in">AVLTree</span>(<span class="keyword">int</span> dt)&#123;</span><br><span class="line">        data = dt;</span><br><span class="line">        height = <span class="number">1</span>;</span><br><span class="line">        left = <span class="literal">nullptr</span>;</span><br><span class="line">        right = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetHeight</span><span class="params">(AVLTree* root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">max</span>(<span class="built_in">GetHeight</span>(root-&gt;left),<span class="built_in">GetHeight</span>(root-&gt;right));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLTree* <span class="title">LL_Rotation</span><span class="params">(AVLTree* root)</span></span>&#123;</span><br><span class="line">    AVLTree* p = root-&gt;left;</span><br><span class="line">    root-&gt;left = p-&gt;right;</span><br><span class="line">    p-&gt;right = root;</span><br><span class="line">    root-&gt;height = <span class="built_in">GetHeight</span>(root);</span><br><span class="line">    p-&gt;height = <span class="built_in">GetHeight</span>(p);</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLTree* <span class="title">RR_Rotation</span><span class="params">(AVLTree* root)</span></span>&#123;</span><br><span class="line">    AVLTree* p = root-&gt;right;</span><br><span class="line">    root-&gt;right = p-&gt;left;</span><br><span class="line">    p-&gt;left = root;</span><br><span class="line">    root-&gt;height = <span class="built_in">GetHeight</span>(root);</span><br><span class="line">    p-&gt;height = <span class="built_in">GetHeight</span>(p);</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLTree* <span class="title">LR_Rotation</span><span class="params">(AVLTree* root)</span></span>&#123;</span><br><span class="line">    root-&gt;left = <span class="built_in">RR_Rotation</span>(root-&gt;left);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">LL_Rotation</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLTree* <span class="title">RL_Rotation</span><span class="params">(AVLTree* root)</span></span>&#123;</span><br><span class="line">    root-&gt;right = <span class="built_in">LL_Rotation</span>(root-&gt;right);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">RR_Rotation</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">AVLTree* <span class="title">InsertTree</span><span class="params">(AVLTree* root,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root)&#123;</span><br><span class="line">        AVLTree* node = <span class="keyword">new</span> <span class="built_in">AVLTree</span>(x);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &lt; root-&gt;data)&#123;</span><br><span class="line">        root-&gt;left = <span class="built_in">InsertTree</span>(root-&gt;left,x);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">GetHeight</span>(root-&gt;left) - <span class="built_in">GetHeight</span>(root-&gt;right) &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(x &lt; root-&gt;left-&gt;data)&#123;</span><br><span class="line">                root = <span class="built_in">LL_Rotation</span>(root);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                root = <span class="built_in">LR_Rotation</span>(root);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(x &gt; root-&gt;data)&#123;</span><br><span class="line">        root-&gt;right = <span class="built_in">InsertTree</span>(root-&gt;right,x);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">GetHeight</span>(root-&gt;right) - <span class="built_in">GetHeight</span>(root-&gt;left) &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(x &lt; root-&gt;right-&gt;data)&#123;</span><br><span class="line">                root = <span class="built_in">RL_Rotation</span>(root);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                root = <span class="built_in">RR_Rotation</span>(root);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    root-&gt;height = <span class="built_in">GetHeight</span>(root);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    AVLTree* root = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line">        cin &gt;&gt; temp;</span><br><span class="line">        root = <span class="built_in">InsertTree</span>(root,temp);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; root-&gt;data;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/17/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -973,101 +1059,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/10/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="bjy">
-      <meta itemprop="description" content="书山有路勤为径，学海无涯苦作舟">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Code King's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/10/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" class="post-title-link" itemprop="url">最短路径算法</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-12-10 16:28:00" itemprop="dateCreated datePublished" datetime="2021-12-10T16:28:00+08:00">2021-12-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-17 17:05:36" itemprop="dateModified" datetime="2022-01-17T17:05:36+08:00">2022-01-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">数据结构——图</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h1><p>最短路径是对一个无负权边的有权图而言的。求最短路径指求一个结点到另一个结点经过的边上的权值之和的最小的路径。</p>
-<h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><p>Dijkstra算法也是一个非常典型的贪心算法。Dijkstra算法和求最小生成树中的Prim算法非常相似，Dijkstra算法也是从某一个结点出发，每次寻找距离起点最小距离的结点，访问这个结点的同时更新这个结点所有邻接点到起点的距离，直到所有结点都已被访问。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_Dijkstra</span><span class="params">(Graph g,<span class="keyword">int</span> start,vector&lt;<span class="keyword">int</span>&gt;&amp; minpath,vector&lt;<span class="keyword">int</span>&gt;&amp; pathvex)</span></span>&#123;</span><br><span class="line">    <span class="comment">//g中包括图的顶点数和边数以及一个邻接矩阵，minpath存储起点到各个结点的最短路径的值</span></span><br><span class="line">    <span class="comment">//pathvex存储每个结点的前驱结点，可以通过前驱结点反向推出最短路径</span></span><br><span class="line">    <span class="keyword">int</span> n = g.numvex;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">flag</span><span class="params">(n,<span class="number">0</span>)</span></span>;  <span class="comment">//访问标记</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        minpath[i] = g.adj[start][i];</span><br><span class="line">        pathvex[i] = <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    flag[start] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;  <span class="comment">//每次循环收入一个结点</span></span><br><span class="line">        <span class="keyword">int</span> dmin = INF;</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;  <span class="comment">//找到当前距离起点最短的那个结点</span></span><br><span class="line">            <span class="keyword">if</span>(!flag[j] &amp;&amp; minpath[j] &lt; dmin)&#123;</span><br><span class="line">                dmin = minpath[j];</span><br><span class="line">                idx = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        flag[idx] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;  <span class="comment">//更新新收入这个结点的所有未收入邻接点的距离</span></span><br><span class="line">            <span class="keyword">if</span>(!flag[j] &amp;&amp; dmin + g.adj[idx][j] &lt; minpath[j])&#123;</span><br><span class="line">                minpath[j] = dmin + g.adj[idx][j];</span><br><span class="line">                pathvex[j] = idx;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h2><p>Floyd算法用来求所有顶点到所有顶点的最短路径，并且在算法实现上非常简洁明了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_Floyd</span><span class="params">(Graph g,vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; minpath,vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; pathvex)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = g.numvex;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">            minpath[i][j] = g.adj[i][j];  <span class="comment">//初始化为邻接矩阵</span></span><br><span class="line">            pathvex[i][j] = j;  <span class="comment">//初始化为列下标</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(minpath[i][k] + minpath[k][j] &lt; minpath[i][j])&#123;</span><br><span class="line">                    <span class="comment">//如果经过k的路径比原来两点之间的路径小</span></span><br><span class="line">                    minpath[i][j] = minpath[i][k] + minpath[k][j]; <span class="comment">//更新最短路径</span></span><br><span class="line">                    pathvex[i][j] = pathvex[i][k];  <span class="comment">//路径设为经过下标k的顶点</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1139,7 +1130,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1215,12 +1206,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">55k</span>
+    <span title="站点总字数">57k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">50 分钟</span>
+    <span title="站点阅读时长">52 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
